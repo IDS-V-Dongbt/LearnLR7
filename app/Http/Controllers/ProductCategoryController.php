@@ -14,9 +14,9 @@ class ProductCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $productcategory=ProductCategory::all();
-        return view('website.backend.product_category.index', compact('productcategory'));
+        return view('website.backend.productcategory.index',compact('productcategory'));
     }
 
     /**
@@ -26,8 +26,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-
-        return view('website.backend.product_category.create');
+        return view('website.backend.productcategory.create');
 
     }
 
@@ -36,19 +35,17 @@ class ProductCategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     * 
      */
     public function store(Request $request)
-    {   
+    {
         $slug=Str::slug($request->brand_name,'-');
-        // $request->merge(['brand_name',$slug]);
+       // $request->merge(['brand_name',$slug]);
+
         ProductCategory::create([
             'brand_name'=>$request->brand_name,
             'slug'=>$slug
+
         ]);
-
-
-
         return redirect()->route('productcategory.index');
     }
 
@@ -69,9 +66,11 @@ class ProductCategoryController extends Controller
      * @param  \App\models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductCategory $productCategory)
+    public function edit(ProductCategory $productcategory )
+
     {
-        return view('website.backend.product_category.update', compact('productcategory'));
+
+        return view('website.backend.productcategory.update',compact('productcategory'));
     }
 
     /**
@@ -81,10 +80,17 @@ class ProductCategoryController extends Controller
      * @param  \App\models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductCategory $productCategory)
+    public function update(Request $request, ProductCategory $productcategory)
     {
-       
-    
+        $slug=Str::slug($request->brand_name,'-');
+       // $request->merge(['brand_name',$slug]);
+
+       $productcategory->update([
+            'brand_name'=>$request->brand_name,
+            'slug'=>$slug
+
+        ]);
+        return redirect()->route('productcategory.index');
 
 
     }
@@ -95,8 +101,11 @@ class ProductCategoryController extends Controller
      * @param  \App\models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy(ProductCategory $productcategory)
     {
-        //
+        $productcategory->delete();
+        return redirect()->route('productcategory.index');
+
+
     }
 }
