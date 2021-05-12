@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductCategoryController extends Controller
 {
@@ -13,8 +14,9 @@ class ProductCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('website.backend.product_category.index');
+    {   
+        $productcategory=ProductCategory::all();
+        return view('website.backend.product_category.index', compact('productcategory'));
     }
 
     /**
@@ -24,6 +26,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
+
         return view('website.backend.product_category.create');
 
     }
@@ -33,10 +36,20 @@ class ProductCategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $slug=Str::slug($request->brand_name,'-');
+        // $request->merge(['brand_name',$slug]);
+        ProductCategory::create([
+            'brand_name'=>$request->brand_name,
+            'slug'=>$slug
+        ]);
+
+
+
+        return redirect()->route('productcategory.index');
     }
 
     /**
@@ -58,7 +71,7 @@ class ProductCategoryController extends Controller
      */
     public function edit(ProductCategory $productCategory)
     {
-        //
+        return view('website.backend.product_category.update', compact('productcategory'));
     }
 
     /**
@@ -70,7 +83,10 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, ProductCategory $productCategory)
     {
-        //
+       
+    
+
+
     }
 
     /**

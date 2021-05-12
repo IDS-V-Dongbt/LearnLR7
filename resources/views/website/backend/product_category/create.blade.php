@@ -1,5 +1,4 @@
 @extends('website.backend.layouts.main')
-
 @section('content')
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
@@ -25,7 +24,7 @@
       <div class="x_content">
         <br>
       <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method="POST" action="{{route('productcategory.store')}}">
-        {{-- @csrf --}}
+        @csrf
 
           <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Brand Name<span class="required">*</span>
@@ -81,3 +80,4 @@
     </div>
   </div>
 @endsection
+
