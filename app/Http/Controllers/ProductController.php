@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\models\Product;
+use App\models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -14,8 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       $product=Product::all();
-       return view('website.backend.product.index',compact('product'));
+        $product=Product::all();
+        return view('website.backend.product.index', compact('product'));
     }
 
     /**
@@ -25,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $productcategory=ProductCategory::all();
+        return view('website.backend.product.create',compact('productcategory'));
     }
 
     /**
@@ -36,7 +39,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $slug=Str::slug($request->product_name,'-');
+        // $request->merge(['brand_name',$slug]);
+
+         Product::create([
+             'product_name'=>$request->product_name,
+             'price'=>$request->price,
+             'product_desc'=>$request->product_desc,
+             'category_id'=>$request->product_category,
+
+             'slug'=>$slug,
+
+         ]);
+         return redirect()->route('product.index');
+
+
     }
 
     /**
@@ -58,7 +75,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+
+        $productcategory=ProductCategory::all();
+        return view('website.backend.product.update', compact('product','productcategory'));
+
+
+
     }
 
     /**
@@ -70,7 +92,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $slug=Str::slug($request->product_name,'-');
+        // $request->merge(['brand_name',$slug]);
+
+         $product->update([
+             'product_name'=>$request->product_name,
+             'price'=>$request->price,
+             'product_desc'=>$request->product_desc,
+             'category_id'=>$request->product_category,
+
+             'slug'=>$slug,
+
+         ]);
+         return redirect()->route('product.index');
     }
 
     /**
@@ -81,6 +115,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index');
     }
 }
