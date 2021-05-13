@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Product;
 use App\models\ProductImage;
 use Illuminate\Http\Request;
+
 
 class ProductImageController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        
+        $productImage=ProductImage::all();
+        return view('website.backend.productimage.index', compact('productImage'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ProductImageController extends Controller
      */
     public function create()
     {
-        //
+        $product=ProductImage::all();
+        return view('website.backend.productimage.create', compact('product'));
     }
 
     /**
