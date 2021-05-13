@@ -46,14 +46,15 @@
 
           <tr role="row">
 
-          <td>{{$procat->category->brand_name}}</td>
+          <td>{{$procat->brand_name}}</td>
           <td>{{$procat->product_name}}</td>
           <td>{{$procat->price}}</td>
 
 
 
-          <td>{{$procat->status}}</td>
+         
           <td>{{$procat->product_desc}}</td>
+          <td>{{$procat->status}}</td>
 
 
             <td>
