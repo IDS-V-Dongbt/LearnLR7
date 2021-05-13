@@ -41,40 +41,33 @@
             </tr>
             </thead>
           <tbody>
-              @foreach ($product as $procat )
-
-
+          @foreach ($products as $product )
           <tr role="row">
+            
+            <td>{{$product->brand_name}}</td>
+            <td>{{$product->product_name}}</td>
+            <td>{{$product->price}}</td>
 
-          <td>{{$procat->brand_name}}</td>
-          <td>{{$procat->product_name}}</td>
-          <td>{{$procat->price}}</td>
 
 
-
-         
-          <td>{{$procat->product_desc}}</td>
-          <td>{{$procat->status}}</td>
-
+          
+            <td>{{$product->product_desc}}</td>
+            <td>{{$product->status}}</td>
 
             <td>
-            <a class="btn btn-app" href="{{route('product.edit',$procat->id)}}">
+            <a class="btn btn-app" href="{{ route('product.edit', ['product' => $product->id]) }}">
                     <i class="fa fa-edit"></i> Edit
                   </a>
-
-
             </td>
             <td>
-                <form method="POST" action="{{route('product.destroy',$procat->id)}}">
+                <form method="POST" action="{{ route('product.destroy', ['product' => $product]) }}">
                     @csrf
                     @method('delete')
                   <button class="btn btn-app">
                     <i class="fa fa-warning"></i> Delete
                   </button>
-                  </form>
-
+                </form>
             </td>
-
           </tr>
           @endforeach
         </tbody>

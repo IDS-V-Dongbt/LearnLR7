@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 
 use App\models\Product;
 use App\models\ProductCategory;
@@ -16,8 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product=Product::all();
-        return view('website.backend.product.index', compact('product'));
+        $products=Product::all();
+        return view('website.backend.product.index', compact('products'));
     }
 
     /**
@@ -73,7 +74,7 @@ class ProductController extends Controller
      * @param  \App\models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($product)
     {
 
         $productcategory=ProductCategory::all();

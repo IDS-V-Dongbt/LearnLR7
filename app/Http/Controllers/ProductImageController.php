@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Product;
+
+use App\models\Product;
 use App\models\ProductImage;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 
 class ProductImageController extends Controller
 {
@@ -26,7 +27,7 @@ class ProductImageController extends Controller
      */
     public function create()
     {
-        $product=ProductImage::all();
+        $product=Product::all();
         return view('website.backend.productimage.create', compact('product'));
     }
 
@@ -38,7 +39,25 @@ class ProductImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $slug=Str::slug($request->img_title,'-');
+
+        $image = time().'.'.$request->img->extension();
+
+        $request->img->move(public_path('images'), $image);
+
+
+         ProductImage::create([
+             'img_title'=>$request->img_title,
+             'img'=>$image,
+             'product_id'=>$request->product_id,
+
+
+             'slug'=>$slug,
+
+         ]);
+         return redirect()->route('productImage.index');
+
     }
 
     /**
@@ -60,7 +79,8 @@ class ProductImageController extends Controller
      */
     public function edit(ProductImage $productImage)
     {
-        //
+        $product=Product::all();
+        return view('website.backend.productimage.update',compact('productImage','product'));
     }
 
     /**
@@ -72,7 +92,28 @@ class ProductImageController extends Controller
      */
     public function update(Request $request, ProductImage $productImage)
     {
-        //
+        $slug=Str::slug($request->img_title,'-');
+        if($request->img){
+            $image = time().'.'.$request->img->extension();
+
+            $request->img->move(public_path('images'), $image);
+
+        }
+
+        else{
+            $image=$productImage->img;
+        }
+
+
+
+        $productImage->update([
+             'img_title'=>$request->img_title,
+             'img'=>$image,
+             'product_id'=>$request->product_id,
+             'slug'=>$slug,
+
+         ]);
+         return redirect()->route('productImage.index');
     }
 
     /**
@@ -83,6 +124,7 @@ class ProductImageController extends Controller
      */
     public function destroy(ProductImage $productImage)
     {
-        //
+        $productImage->delete();
+        return redirect()->route('productImage.index');
     }
 }

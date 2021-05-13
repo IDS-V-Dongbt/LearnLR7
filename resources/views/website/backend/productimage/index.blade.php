@@ -45,7 +45,7 @@
 
           <tr role="row">
 
-          <td>{{$procat->product->product_name}}</td>
+          {{-- <td>{{$procat->product->product_name}}</td> --}}
           <td>{{$procat->img_title}}</td>
           <td>
           <img src="{{asset('images/'.$procat->img)}}" height="50px" width="50px">
