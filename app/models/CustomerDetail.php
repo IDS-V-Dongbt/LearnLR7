@@ -19,9 +19,14 @@ class CustomerDetail extends Model
         'district',
         'post_code',
         'other_notes'
+
+
+
+
+
     ];
-    public function payments()
-    {
-      return $this->hasMany('App\models\Payment');
-    }
+public function payments(){
+    return $this->hasMany('App\models\Payment');
+}
+
 }
