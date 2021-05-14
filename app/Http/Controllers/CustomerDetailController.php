@@ -14,7 +14,8 @@ class CustomerDetailController extends Controller
      */
     public function index()
     {
-        //
+        $customerDetail=CustomerDetail::all();
+        return view('website.backend.customerdetail.index', compact('customerDetail'));
     }
 
     /**
@@ -24,7 +25,8 @@ class CustomerDetailController extends Controller
      */
     public function create()
     {
-        //
+        $customerDetail=CustomerDetail::all();
+        return view('website.backend.customerdetail.create');
     }
 
     /**
