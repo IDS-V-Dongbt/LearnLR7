@@ -31,3 +31,7 @@ Route::get('dashboard', 'BackendController@index')->name('backend.index');
 Route::resource('product','ProductController'); 
 Route::resource('productcategory', 'ProductCategoryController'); 
 Route::resource('productImage', 'ProductImageController'); 
+Route::resource('customerDetail', 'CustomerDetailController'); 
+Route::resource('payment', 'PaymentController'); 
+Route::resource('contact', 'ContactController'); 
+Route::resource('contactForm', 'ContactFormController'); 
