@@ -1,0 +1,35 @@
+.footer{
+    background: $color-primary-text;
+    display: flex;
+    justify-content: space-between;
+    &_left, &_right{
+        display: flex;
+        &--text{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            a {
+                margin-right: 0.25rem;
+                margin-left: 1.5rem;
+                position: relative;
+                
+                span{
+                    background-image: url('../../img/Line\ 1.png');
+                    position: absolute;
+                    bottom: 0px;
+                    width: 11rem;
+                    height: 1px;
+                    left: 0;
+                }
+                .nth_2{
+                    background-image: url('../../img/Line\ 1.png');
+                    position: absolute;
+                    bottom: 0px;
+                    width: 6.5rem;
+                    height: 1px;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
