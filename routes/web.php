@@ -38,3 +38,5 @@ Route::resource('payment', 'PaymentController');
 
 Route::resource('contact', 'ContactController'); 
 Route::resource('contactForm', 'ContactFormController'); 
+
+Route::resource('abc', 'DangNhapController');

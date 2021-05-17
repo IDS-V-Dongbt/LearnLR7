@@ -1,4 +1,4 @@
-<script src="{{asset('frontend/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="{{asset('frontend/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/popper.min.js')}}"></script>
