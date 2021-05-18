@@ -12,6 +12,9 @@ a {
   text-decoration: none;
   cursor: pointer; }
 
+a:not(.footer_left--text, .btn-text):hover {
+  text-decoration: underline; }
+
 body {
   box-sizing: border-box; }
 
@@ -200,9 +203,9 @@ body {
     .login__form {
       flex-wrap: wrap; }
       .login__form-box {
+        margin: 1rem;
         padding: 1rem;
         padding-right: 0;
-        margin-right: 0;
         margin-bottom: 4rem;
         width: 100%;
         height: auto; }
@@ -220,7 +223,8 @@ body {
     flex-direction: column; }
 
   .btn-forgot {
-    font-size: 1.3rem; } }
+    font-size: 1.3rem;
+    transform: translate(-50%, 160%); } }
 @media screen and (max-width: 1200px) {
   .login__form-box {
     height: 40rem; } }
