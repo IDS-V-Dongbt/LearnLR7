@@ -31,10 +31,11 @@
                         <span>パスワード</span>
                         <input type="text" placeholder="パスワード">
                     </div>
-                    <label for="check1"><a class="login__form-box--remember">
-                        <input type="checkbox" id="check1">
-                        ログイン情報を保存する
-                    </a></label>
+                    <label class="container">ログイン情報を保存する
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    
                     
                     <div class="btn_block">
                         <a href="#loginsubmit" class="btn btn-text">ログイン</a>

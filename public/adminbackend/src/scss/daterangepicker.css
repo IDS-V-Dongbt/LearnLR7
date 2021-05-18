@@ -11,8 +11,7 @@
 .daterangepicker .input-mini {
   background-color: #eee;
   border: 1px solid #ccc;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 .daterangepicker .input-mini.active {

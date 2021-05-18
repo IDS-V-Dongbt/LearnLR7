@@ -17,7 +17,7 @@
        
         &-box{
             width: 66.5rem;
-            height: 38rem;
+            height: 35rem;
             background: $color-primary-light;
             border-radius: 0.5rem;
             margin-right: 3rem;
@@ -143,4 +143,12 @@
     .btn-forgot{
         font-size: 1.3rem;
     }
+}
+@media screen and (max-width: 1200px){
+    .login {
+        &__form-box {
+            height: 40rem;
+        }
+    }
+    
 }
